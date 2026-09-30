@@ -17,3 +17,5 @@ Default admin: `admin@school.edu` / `admin123` (override with ADMIN_EMAIL / ADMI
 ## Rules implemented
 - One registration per user per event; approving beyond max participants auto-rejects.
 - Notifications: user on approve/reject; admins when an event reaches max participants.
+
+Jenkins CI automatic build test
