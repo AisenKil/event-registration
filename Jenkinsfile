@@ -10,6 +10,8 @@ pipeline {
         FRONTEND_DIR = 'frontend'
         DB_NAME = 'event_registration'
         MYSQL = 'C:\\xampp\\mysql\\bin\\mysql.exe'
+        DOCKER_IMAGE = 'event-registration:latest'
+        DOCKER_CONTAINER = 'event-registration'
     }
 
     stages {
@@ -55,6 +57,19 @@ pipeline {
                 dir("${FRONTEND_DIR}") {
                     bat 'npm run build'
                 }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t %DOCKER_IMAGE% .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'docker rm -f %DOCKER_CONTAINER% 2>nul || exit /b 0'
+                bat 'docker run -d --name %DOCKER_CONTAINER% -p 4000:4000 -e PORT=3000 -e DB_HOST=host.docker.internal -e DB_USER=root -e DB_PASSWORD= -e DB_NAME=%DB_NAME% -e ADMIN_EMAIL=admin@school.edu -e ADMIN_PASSWORD=admin123 %DOCKER_IMAGE%'
             }
         }
     }
