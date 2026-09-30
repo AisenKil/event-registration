@@ -75,16 +75,18 @@ pipeline {
     }
 
     post {
+        always {
+            junit testResults: 'backend/test-results.xml', allowEmptyResults: true
+            echo 'JUnit test report published.'
+            echo 'Pipeline finished.'
+        }
+
         success {
             echo 'Pipeline completed successfully.'
         }
 
         failure {
             echo 'Pipeline failed. Check the stage logs above.'
-        }
-
-        always {
-            echo 'Pipeline finished.'
         }
     }
 }

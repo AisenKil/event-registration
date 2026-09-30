@@ -4,7 +4,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "node --test"
+    "test": "node --test --test-reporter=junit --test-reporter-destination=test-results.xml"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
