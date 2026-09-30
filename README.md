@@ -1,11 +1,12 @@
 # School Event Registration
 
 A school event registration system built with React, TypeScript, Express, MySQL, Nginx, Docker, and Jenkins CI/CD.
-Members Included:
-Karl Laxamana
-Angelo Barazon
-Joshua Tanglao
-Martin Villanueva
+
+#Members Included:
+* Karl Laxamana
+* Angelo Barazon
+* Joshua Tanglao
+* Martin Villanueva
 
 ## Technology Stack
 
